@@ -49,6 +49,7 @@ jobs:
       - name: Load and run tests
         run: |
           export PATH="$PATH:$GITHUB_WORKSPACE/quicklisp/local-projects/cl-protobufs/protoc/"
+          cd ../..
           ./abcl/abcl --eval '(print (ql:where-is-system :cl-protobufs))' --eval '(ql:quickload :cl-protobufs)' --eval '(asdf:test-system :cl-protobufs)'
           test -f report
           ! grep -q "not ok" report
